@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+gunicorn = "*"
+sipy = {git = "https://github.com/half-cambodian-hacker-man/sipy.git"}
+requests = "*"
+beautifulsoup4 = "*"
+
+[requires]
+python_version = "3.8"
