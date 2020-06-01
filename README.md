@@ -4,7 +4,7 @@ A personal link aggregator for interesting code projects / links / whatever you 
 
 ## Motivation
 
-I like GitHub's stars, but you can only use them on GitHub projects! Vendor lock in is sad >:(
+I like GitHub's stars, but you can only use them on GitHub projects! Vendor lock in is sad 😔
 
 With Starboard, you can 'star' a project from any git forge, or even any link!
 
