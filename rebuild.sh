@@ -2,4 +2,4 @@
 
 python3 -m sipy
 rm -rf $STARBOARD_STATIC > /dev/null || true
-cp -r out/ $STARBOARD_STATIC
+cp -r static_out $STARBOARD_STATIC

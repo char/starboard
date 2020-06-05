@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlsplit
+import re
 
 from starboard.db import StarredProject
 
@@ -15,27 +16,36 @@ def parse_opengraph(doc):
   for og in ogs:
     opengraph_tags[og["property"][3:]] = og["content"]
 
+  return opengraph_tags
+
 
 def og_valid(og):
-  required_attrs = ["title", "type", "image", "url"]
-  return all([hasattr(og, attr) for attr in required_attrs])
+  required_attrs = ["title"]
+  return all(attr in og for attr in required_attrs)
 
 
 def scrape_project_info(url) -> StarredProject:
   r = requests.get(url, headers={ "User-Agent": USER_AGENT })
-  bs = BeautifulSoup(r.text)
+  bs = BeautifulSoup(r.text, features="html.parser")
 
   hostname = urlsplit(url)[1]
 
   title = bs.title.string
   description = hostname
 
-  og = parse_opengraph(html=bs)
+  og = parse_opengraph(doc=bs)
   if og_valid(og):
     if "description" in og:
       description = og["description"]
-      title = og["title"] + " @ " + og.get("site_name", default=hostname)
+      description = remove_suffix(description, og["title"]).rstrip("- :")
+      title = og["title"] + " @ " + og.get("site_name", hostname)
     else:
       title = og["title"]
 
-  return StarredProject(0, url, title, description, None)
+  return StarredProject(0, url, title, description, None, None)
+
+def remove_suffix(s: str, suffix: str, /) -> str:
+  if suffix and s.endswith(suffix):
+    return s[:-len(suffix)]
+  else:
+    return s[:]

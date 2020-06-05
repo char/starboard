@@ -1,0 +1,23 @@
+{% set title = "Star Something" %}
+{% set description = "Add a project to Starboard. Requires login." %}
+{% extends "_base.html.j2" %}
+
+{% block header %}
+  <h1>Star something</h1>
+  <small>It can be a code project, a cool blog post, or anything worth sharing!</small>
+{% endblock %}
+
+{% block content %}
+  <form action="/star?redir" method="POST">
+    <label for="key">Authentication Key</label>
+    <input name="key" type="password" id="key" placeholder="Key" required>
+
+    <label for="url">URL</label>
+    <input name="urls[]" type="url" id="url" placeholder="https://example.com/" required autocomplete>
+
+    <label for="note">Note (optional)</label>
+    <textarea name="notes[]" id="note" rows="6" cols="80" placeholder="Write a note!"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

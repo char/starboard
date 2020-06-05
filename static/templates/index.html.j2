@@ -1,0 +1,31 @@
+{% set title = "Starboard" %}
+{% set description = "Link aggregator for interesting code projects" %}
+{% set override_title = true %}
+{% extends "_base.html.j2" %}
+
+{% block header %}
+  <h1>Starboard</h1>
+  <small class="tagline">Link aggregator for interesting code projects.</small>
+{% endblock header %}
+
+{% block content %}
+  {% for project in projects %}
+    <article>
+      <div class="details">
+        <h2><a href="{{ project.url }}">{{ project.title }}</a></h2>
+        <aside>{{ project.description }}</aside>
+      </div>
+
+
+      <p>Starred by {{ admin_name }}: <time datetime="{{ project.timestamp }}">{{ project.timestamp.split(" ")[0] }}</time></p>
+      {% if project.note %}
+        <p>
+          {{ project.note }}
+        </p>
+      {% endif %}
+    </article>
+  {% else %}
+    <p>No starred projects, yet.</p>
+    <p>Why not <a href="/star/">add one</a>?</p>
+  {% endfor %}
+{% endblock content %}
