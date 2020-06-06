@@ -6,8 +6,7 @@ import os
 import shutil
 
 
-STARBOARD_USER = os.environ.get("STARBOARD_ADMIN", "the admin")
-
+STARBOARD_ADMIN = os.environ.get("STARBOARD_ADMIN", "the admin")
 
 source_directory_name = "static"
 output_directory_name = "static_out"
@@ -34,7 +33,7 @@ def build(ctx):
 
   template_context = {
     "projects": projects,
-    "admin_name": STARBOARD_USER
+    "admin_name": STARBOARD_ADMIN
   }
 
   homepage_html = generate_homepage(ctx, template_context)
