@@ -5,7 +5,7 @@ from starboard.env import STARBOARD_KEY, STARBOARD_DATABASE
 from starboard.scraping import scrape_project_info
 from starboard.building import rebuild_site
 
-from flask import Flask, request, jsonify, g, redirect
+from flask import Flask, request, jsonify, g, redirect, Response
 import sqlite3
 
 
@@ -100,7 +100,11 @@ def star():
   if "redir" in request.args:
     return redirect("/")
 
-  return jsonify(projects)
+  res = Response()
+  res.status_code = 304
+  res.headers["Location"] = "/"
+  res.autocorrect_location_header = False
+  return res
 
 @app.route("/")
 def index_page():
