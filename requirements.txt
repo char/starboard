@@ -1,0 +1,21 @@
+beautifulsoup4==4.9.1
+certifi==2020.4.5.1
+cffi==1.14.0
+chardet==3.0.4
+click==7.1.2
+Flask==1.1.2
+gunicorn==20.0.4
+idna==2.9
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+misaka==2.1.1
+pathtools==0.1.2
+pycparser==2.20
+PyYAML==5.3.1
+requests==2.23.0
+sipy @ git+https://github.com/half-cambodian-hacker-man/sipy.git@cdc81cde7f4b259d3e318d49e86046ab424f8037
+soupsieve==2.0.1
+urllib3==1.25.9
+watchdog==0.10.2
+Werkzeug==1.0.1
