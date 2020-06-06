@@ -38,6 +38,9 @@ def scrape_project_info(url) -> StarredProject:
     if "description" in og:
       description = og["description"]
       description = remove_suffix(description, og["title"]).rstrip("- :")
+      description = remove_suffix(description, ". Contribute to " + og["title"]
+        + " development by creating an account on GitHub.")
+
       title = og["title"] + " @ " + og.get("site_name", hostname)
     else:
       title = og["title"]
