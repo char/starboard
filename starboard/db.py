@@ -3,13 +3,10 @@ from typing import Iterable, Optional
 from sqlite3 import Connection
 
 
-STARRED_PROJECTS_TABLE = "starred_projects"
-
-
 def initialise_db(db: Connection):
   c = db.cursor()
-  c.execute(f"""
-    CREATE TABLE {STARRED_PROJECTS_TABLE} (
+  c.execute("""
+    CREATE TABLE starred_projects (
       proj_id integer primary key autoincrement,
       url text not null,
       title text not null,
@@ -34,7 +31,7 @@ class StarredProject:
 
 def list_starred_projects(db: Connection) -> Iterable[StarredProject]:
   c = db.cursor()
-  for row in c.execute(f"SELECT * FROM {STARRED_PROJECTS_TABLE} ORDER BY timestamp DESC"):
+  for row in c.execute("SELECT * FROM starred_projects ORDER BY timestamp DESC"):
     yield StarredProject(*row)
 
   c.close()
@@ -42,7 +39,7 @@ def list_starred_projects(db: Connection) -> Iterable[StarredProject]:
 
 def get_existing_project(db: Connection, url):
   c = db.cursor()
-  for row in c.execute(f"SELECT * FROM {STARRED_PROJECTS_TABLE} WHERE url = ?", (url,)):
+  for row in c.execute("SELECT * FROM starred_projects WHERE url = ?", (url,)):
     c.close()
     return StarredProject(*row)
 
@@ -57,7 +54,7 @@ def add_project(db: Connection, project: StarredProject):
   if get_existing_project(db, project.url) is not None:
     return existing_project
 
-  c.execute(f"INSERT INTO {STARRED_PROJECTS_TABLE}" \
+  c.execute("INSERT INTO starred_projects" \
     "(url, title, description, note) VALUES (?, ?, ?, ?)",
     (project.url, project.title, project.description, project.note)
   )

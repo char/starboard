@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from starboard.db import STARRED_PROJECTS_TABLE, list_starred_projects, add_project
+from starboard.db import list_starred_projects, add_project
 from starboard.env import STARBOARD_KEY, STARBOARD_DATABASE
 from starboard.scraping import scrape_project_info
 from starboard.building import rebuild_site
@@ -79,7 +79,7 @@ def star():
   db = get_db()
   c = db.cursor()
   if request.method == "DELETE":
-    c.executemany(f"DELETE FROM {STARRED_PROJECTS_TABLE} WHERE url = ?", )
+    c.executemany("DELETE FROM starred_projects WHERE url = ?", )
     rebuild_site()
 
     return jsonify(urls), 200
