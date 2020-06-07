@@ -98,13 +98,13 @@ def star():
   rebuild_site()
 
   if "redir" in request.args:
-    return redirect("/")
+    res = Response()
+    res.status_code = 302
+    res.headers["Location"] = "/"
+    res.autocorrect_location_header = False
+    return res
 
-  res = Response()
-  res.status_code = 304
-  res.headers["Location"] = "/"
-  res.autocorrect_location_header = False
-  return res
+  return jsonify(projects)
 
 @app.route("/")
 def index_page():
