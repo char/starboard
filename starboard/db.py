@@ -22,7 +22,7 @@ def initialise_db(db: Connection):
   c.close()
 
 
-@dataclass
+@dataclass(unsafe_hash=True)
 class StarredProject:
   proj_id: int
   url: str

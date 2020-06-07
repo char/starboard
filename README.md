@@ -26,7 +26,6 @@ The Starboard API server is configured through environment variables:
 - `STARBOARD_KEY` defines the authorization key to be able to modify the list of starred projects.
 - `STARBOARD_STATIC` defines the location of the served static website. Defaults to `data/starboard/`
 - `STARBOARD_DATABASE` defines the location of the sqlite3 database file. Defaults to `data/starboard.db`
-- `STARBOARD_ADMIN` defines the name of the person that administrates the Starboard instance. Defaults to "the admin". 
 
 Starboard has one API endpoint, `/star`. You can: 
 - `GET` it to list all the starred projects

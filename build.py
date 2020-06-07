@@ -5,8 +5,8 @@ import sqlite3
 import os
 import shutil
 
+import datetime
 
-STARBOARD_ADMIN = os.environ.get("STARBOARD_ADMIN", "the admin")
 
 source_directory_name = "static"
 output_directory_name = "static_out"
@@ -30,10 +30,14 @@ def build(ctx):
 
   db = sqlite3.connect(os.environ["STARBOARD_DATABASE"])
   projects = list(list_starred_projects(db))
+  project_timestamps = { \
+    project : datetime.datetime.fromisoformat(project.timestamp) \
+    for project in projects \
+  }
 
   template_context = {
     "projects": projects,
-    "admin_name": STARBOARD_ADMIN
+    "project_timestamps": project_timestamps
   }
 
   homepage_html = generate_homepage(ctx, template_context)

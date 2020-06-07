@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "90fdf51a798bc6f367218b92724bda945e68cea19817c8b6fecba7a5dfc3eaec"
+            "sha256": "47c512e08c745a54f5f24bea373e10aa8746c991fc97120dc1e38cd75ccc7d82"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -95,6 +95,13 @@
             ],
             "index": "pypi",
             "version": "==20.0.4"
+        },
+        "htmlmin": {
+            "hashes": [
+                "sha256:50c1ef4630374a5d723900096a961cff426dff46b48f34d194a81bbe14eca178"
+            ],
+            "index": "pypi",
+            "version": "==0.1.12"
         },
         "idna": {
             "hashes": [
@@ -205,7 +212,7 @@
         },
         "sipy": {
             "git": "https://github.com/half-cambodian-hacker-man/sipy.git",
-            "ref": "cdc81cde7f4b259d3e318d49e86046ab424f8037"
+            "ref": "07725ef2920ffa5ebbc551ac1a1ecbb150a945a0"
         },
         "soupsieve": {
             "hashes": [

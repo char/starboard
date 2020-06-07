@@ -16,8 +16,13 @@
         <aside>{{ project.description }}</aside>
       </div>
 
+      <p>
+        Starred:
+        <time datetime="{{ project.timestamp }}">
+          {{ project_timestamps[project].strftime("%-d %B %Y at %H:%M") }}
+        </time>
+      </p>
 
-      <p>Starred by {{ admin_name }}: <time datetime="{{ project.timestamp }}">{{ project.timestamp.split(" ")[0] }}</time></p>
       {% if project.note %}
         <p>
           {{ project.note }}
