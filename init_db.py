@@ -6,6 +6,6 @@ import sqlite3
 
 
 if __name__ == "__main__":
-  db = sqlite3.connect(STARBOARD_DATABASE)
-  initialise_db(db)
-  db.close()
+    db = sqlite3.connect(STARBOARD_DATABASE)
+    initialise_db(db)
+    db.close()
