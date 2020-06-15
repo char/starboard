@@ -7,7 +7,7 @@ def project_rss(star_id, project):
         <guid>https://stars.hackery.site/star-{star_id}</guid>
         <link>https://stars.hackery.site/star-{star_id}</link>
         <pubDate>{project.timestamp}</pubDate>
-        <title>{project.title}<title>
+        <title>{project.title}</title>
         <description>{project.description}</description>
     </item>"""
 
