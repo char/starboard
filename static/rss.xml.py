@@ -13,7 +13,7 @@ def project_rss(star_id, project):
 
 
 def render_text(ctx, projects):
-    generation_date = datetime.now().isoformat()
+    generation_date = datetime.now().isoformat(sep=" ")
 
     projects_rss = "".join(
         project_rss(len(projects) - i, project) for i, project in enumerate(projects)
