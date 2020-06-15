@@ -15,12 +15,16 @@ def project_rss(star_id, project):
 def render_text(ctx, projects):
     generation_date = datetime.now().isoformat()
 
+    projects_rss = "".join(
+        project_rss(len(projects) - i, project) for i, project in enumerate(projects)
+    )
+
     return f"""<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
         <title>Starboard</title>
         <description>Link aggregator for interesting code projects</description>
         <lastBuildDate>{generation_date}</lastBuildDate>
-        {''.join(map(project_rss, projects))}
+        {projects_rss}
     </channel>
 </rss>"""
