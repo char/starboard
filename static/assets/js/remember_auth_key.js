@@ -1,4 +1,4 @@
-let starForm = document.querySelector("star-form");
+let starForm = document.getElementById("star-form");
 
 const storeKey = () => {
     const keyField = document.getElementById("key");
