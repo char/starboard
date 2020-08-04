@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-  <form action="/star?redir" method="POST">
+  <form id="star-form" action="/star?redir" method="POST">
     <label for="key">Authentication Key</label>
     <input name="key" type="password" id="key" placeholder="Key" required>
 
@@ -20,4 +20,6 @@
 
     <input type="submit" value="Submit">
   </form>
+
+  <script src="/assets/js/remember_auth_key.js"></script>
 {% endblock %}
