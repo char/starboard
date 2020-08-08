@@ -12,6 +12,7 @@ requests = "*"
 beautifulsoup4 = "*"
 sipy = {git = "https://github.com/half-cambodian-hacker-man/sipy.git"}
 htmlmin = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
